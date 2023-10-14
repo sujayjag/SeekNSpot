@@ -24,15 +24,3 @@ chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         urlElem.textContent = "Not a YouTube page!";
     }
 });
-
-document.addEventListener("click", timestamp)
-
-function timestamp() {
-    let frame = document.getElementById('streamlitFrame').src
-    let time = new URLSearchParams(frame).get('t')
-
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        // chrome.tabs.update({ url: currentTab.url + "&t=" + time });
-        chrome.tabs.update({ url: "https://www.github.com" });
-    });
-}
