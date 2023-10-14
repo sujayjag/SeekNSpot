@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
     "manifest_version": 3,
     "name": "My Extension",
     "version": "1.0",
@@ -11,4 +12,36 @@
     },
     "permissions": ["activeTab"]
 
+=======
+  "manifest_version": 3,
+  "name": "SeekNSpot",
+  "version": "1.0.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Click to open panel"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "host_permissions": [
+    "https://*.openai.com/"
+  ],
+  "permissions": [
+    "sidePanel",
+    "declarativeNetRequest",
+    "notifications"
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' http://localhost:8501; object-src 'self'; frame-src 'self' http://localhost:8501;"
+}
+>>>>>>> Stashed changes
 }
