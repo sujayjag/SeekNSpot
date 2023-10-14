@@ -18,7 +18,7 @@
     "default_path": "sidepanel.html"
   },
   "host_permissions": [
-    "https://*.youtube.com/"
+    "http://localhost/"
   ],
   "permissions": [
     "sidePanel",
@@ -26,5 +26,11 @@
     "notifications",
     "activeTab",
     "tabs"
-  ]
+  ],
+  "web_accessible_resources": [
+    {
+        "resources": ["*"],
+        "matches": ["http://localhost/*"]
+    }
+]
 }

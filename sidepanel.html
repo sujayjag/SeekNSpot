@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="sidepanel.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Extension</title>
     <style>
@@ -24,9 +25,12 @@
     </style>
 </head>
 <body>
-    <p id="url"></p>
-    <script src="sidepanel.js"></script>
-    <button type="button" id="timestamp">Timestamp Test</button>
+    <button id="openUrlButton">Open URL</button>
+    <!-- Embed your Streamlit website in an iframe -->
     <iframe id="streamlitFrame" src="http://localhost:8501/?key=" sandbox="allow-forms allow-modals allow-popups allow-scripts allow-same-origin"></iframe>
+    <p id="url"></p>
+    
+    <!-- <button id="getUrlButton">Get URL from Flask</button>  -->
+    
 </body>
 </html>

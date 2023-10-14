@@ -1,38 +1,53 @@
-// chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-//         let currentTab = tabs[0];
-//         let urlElem = document.getElementById('url');
-//         let iframeElem = document.getElementById('streamlitFrame');
-    
-//         if (currentTab && currentTab.url && currentTab.url.includes('youtube.com')) {
-//             urlElem.textContent = currentTab.url;
-//         } else {
-//             urlElem.textContent = "Not a YouTube page!";
-//         }
-//         //console.log(urlElem);
-//     });
-
 chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
     let currentTab = tabs[0];
-    let urlElem = document.getElementById('url');
-    let iframeElem = document.getElementById('streamlitFrame');
-    
+
     if (currentTab && currentTab.url && currentTab.url.includes('youtube.com')) {
-        urlElem.textContent = currentTab.url;
-        let newIframeSrc = iframeElem.src + currentTab.url;
-        iframeElem.src = newIframeSrc;
+        const youtubeURL = currentTab.url;
+
+        // Send the YouTube URL to your Flask backend
+        fetch('http://localhost:5000/receive-youtube-url', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ youtubeURL }),
+        }).then(() => console.log("POST REQUEST SUCCESSFUL")).then(response => console.log(JSON.stringify(response)));
+       
+
+        // Optionally, store the URL in a variable for later use
+        // const storedURL = youtubeURL;
     } else {
-        urlElem.textContent = "Not a YouTube page!";
+        // Handle the case when the current page is not a YouTube page
     }
 });
 
-document.addEventListener("click", timestamp)
-
-function timestamp() {
-    let frame = document.getElementById('streamlitFrame').src
-    let time = new URLSearchParams(frame).get('t')
-
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-        // chrome.tabs.update({ url: currentTab.url + "&t=" + time });
-        chrome.tabs.update({ url: "https://www.github.com" });
+document.addEventListener('DOMContentLoaded', function() {
+    const openUrlButton = document.getElementById('openUrlButton');
+    
+    openUrlButton.addEventListener('click', function() {
+        // Fetch the URL from the backend
+        fetch('http://localhost:5000/get-url-file')
+            .then(response => response.json())
+            .then(data => {
+                const url = data.url;
+                console.log("Received URL:", url);
+                
+                // Update the current tab with the received URL
+                chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+                    const currentTab = tabs[0];
+                    if (currentTab && url) {
+                        chrome.tabs.update(currentTab.id, { url });
+                    } else {
+                        alert("URL is empty or doesn't exist");
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching URL:", error);
+                alert("Failed to fetch URL");
+            });
     });
-}
+});
+
+
+
