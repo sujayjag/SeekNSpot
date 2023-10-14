@@ -18,11 +18,13 @@
     "default_path": "sidepanel.html"
   },
   "host_permissions": [
-    "https://*.openai.com/"
+    "https://*.youtube.com/"
   ],
   "permissions": [
     "sidePanel",
     "declarativeNetRequest",
-    "notifications"
+    "notifications",
+    "activeTab",
+    "tabs"
   ]
 }
