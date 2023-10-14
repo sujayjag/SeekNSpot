@@ -3,7 +3,7 @@
 <head>
     <script src="sidepanel.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Extension</title>
+    <title>SeekNSpot</title>
     <style>
         html,
         body,
@@ -22,10 +22,26 @@
             justify-content: center;
             align-items: center;
         }
+        .open-url-btn {
+            width: 100%;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #FFFFFF;
+            background-color: #444;  /* Slightly lighter than the background for contrast */
+            border: 2px solid #FF5733;  /* Adding a border color to match any highlight you might have */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        /* Hover effect for the button */
+        .open-url-btn:hover {
+            background-color: #555;  /* A bit lighter on hover */
+            transform: scale(1.05);  /* Slightly enlarging the button on hover for emphasis */
+        }
     </style>
 </head>
 <body>
-    <button id="openUrlButton">Open URL</button>
+    <button id="openUrlButton" class="open-url-btn" >Take Me There!</button>
     <!-- Embed your Streamlit website in an iframe -->
     <iframe id="streamlitFrame" src="http://localhost:8501/?key=" sandbox="allow-forms allow-modals allow-popups allow-scripts allow-same-origin"></iframe>
     <p id="url"></p>
