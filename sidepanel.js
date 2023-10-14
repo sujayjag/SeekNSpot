@@ -24,3 +24,38 @@ chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         urlElem.textContent = "Not a YouTube page!";
     }
 });
+
+// function checkForNewURL() {
+//     let desiredURL = document.querySelector('meta[name="desired-url"]').getAttribute('content');
+
+//     if (desiredURL) {
+//         chrome.tabs.update({ url: desiredURL });
+//     }
+// }
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     let iframeContent = document.getElementById("streamlitFrame").contentWindow;
+    
+//     iframeContent.document.querySelector("button:contains('link change test')").addEventListener('click', function() {
+//         checkForNewURL();
+//     });
+// });
+
+// let iframeContent = document.getElementById("streamlitFrame").contentWindow;
+// console.log(iframeContent);
+// let buttons = iframeContent.document.querySelectorAll("button");
+// let targetButton;
+
+// for (let btn of buttons) {
+//     console.log(btn.textContent);
+//     if (btn.textContent.includes('link change test')) {
+//         targetButton = btn;
+//         break;
+//     }
+// }
+
+// if (targetButton) {
+//     targetButton.addEventListener('click', function() {
+//         checkForNewURL();
+//     });
+// }
