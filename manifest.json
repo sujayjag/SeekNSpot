@@ -1,18 +1,4 @@
 {
-<<<<<<< Updated upstream
-    "manifest_version": 3,
-    "name": "My Extension",
-    "version": "1.0",
-    "description": "A simple Chrome Extension",
-    "action": {
-        "default_popup": "popup.html",
-        "default_icon": {
-            "1024": "images/icon.png"
-        }
-    },
-    "permissions": ["activeTab"]
-
-=======
   "manifest_version": 3,
   "name": "SeekNSpot",
   "version": "1.0.0",
@@ -43,5 +29,4 @@
   "content_security_policy": {
     "extension_pages": "script-src 'self' http://localhost:8501; object-src 'self'; frame-src 'self' http://localhost:8501;"
 }
->>>>>>> Stashed changes
 }
